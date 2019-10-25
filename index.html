@@ -26,15 +26,19 @@
     <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
     <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
     <script src="https://static.robotwebtools.org/keyboardteleopjs/current/keyboardteleop.min.js"></script>
+    <!-- Control Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.7.3/nipplejs.js"></script>
     <script src="control.js"></script>
+    <script src="base_control.js"></script>
+    <script src="joystick_controls.js"></script>
+    <script src="helper_functions.js"></script>
 </head>
 
 <body>
     <!-- VIDEO -->
     <div class="row my-4">
         <div class="col d-flex justify-content-center ">
-            <img src="" class="p-1" alt="" id="video" />
+            <img src="" class="p-1" alt="" id="video"></img>
         </div>
     </div>
 
@@ -45,25 +49,25 @@
             <div class="card">
                 <div class="card-header">Base Control</div>
                 <div class="card-body btn-group btn-group-sm">
-                    <button type="button" class="btn btn-primary">Left</button>
+                    <button type="button" class="btn btn-primary" id="base_left">Left</button>
                     <div class="btn-group-vertical btn-group-sm ">
-                        <button type="button" class="btn btn-primary">Forward</button>
-                        <button type="button" class="btn btn-primary">Backward</button>
+                        <button type="button" class="btn btn-primary" id="base_forward">Forward</button>
+                        <button type="button" class="btn btn-primary" id="base_backward">Backward</button>
                     </div>
-                    <button type="button" class="btn btn-primary">Right</button>
+                    <button type="button" class="btn btn-primary" id="base_right">Right</button>
+                </div>
+                <div class="card-body btn-group btn-group-md">
+                    <button type="button" class="btn btn-primary" id="base_rot_left">Rotate Left</button>
+                    <button type="button" class="btn btn-primary" id="base_rot_right">Rotate Right</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-2">
             <div class="card">
                 <div class="card-header">Torso Control</div>
-                <div class=" card-body btn-group btn-group-sm d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary">Twist Left</button>
-                    <div class="btn-group-vertical btn-group-sm ">
-                        <button type="button" class="btn btn-primary">Up</button>
-                        <button type="button" class="btn btn-primary">Down</button>
-                    </div>
-                    <button type="button" class="btn btn-primary">Twist Right</button>
+                <div class="card-body btn-group-vertical btn-group-sm d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary">Up</button>
+                    <button type="button" class="btn btn-primary">Down</button>
                 </div>
             </div>
         </div>
@@ -116,7 +120,7 @@
     <div class="row my-4">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div class="alert alert-warning" id = "info-panel">
+            <div class="alert alert-warning" id="info-panel">
                 <h4 class="alert-heading">ROS Control Panel</h4>
                 <ul>
                     <li>Alter the movement speed using the slider</li>
