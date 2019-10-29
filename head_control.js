@@ -7,6 +7,7 @@ const POSITION_CHANGE_TILT = 0.01;
 
 var pan_position = 0.0;
 var tilt_position = 0.0;
+var move_velocity = 0.87;
 
 // Torso Control Message
 movo_head_cmd_publisher = new ROSLIB.Topic({
@@ -21,14 +22,16 @@ moveHead = function (pan, tilt) {
     pan_position += pan;
     tilt_position += tilt;
     // Clamp position
-    pan_position = Math.max(MIN_HEIGHT, Math.min(pan_position, MAX_HEIGHT));
-    tilt_position = Math.max(MIN_HEIGHT, Math.min(tilt_position, MAX_HEIGHT));
+    pan_position = Math.max(MIN_TILT, Math.min(pan_position, MAX_TILT));
+    tilt_position = Math.max(MIN_TILT, Math.min(tilt_position, MAX_TILT));
     var height_position = new ROSLIB.Message({
         pan_cmd: {
-            pos_rad: pan_position
+            pos_rad: pan_position,
+            vel_rps: move_velocity
         },
         tilt_cmd: {
-            pos_rad: tilt_position
+            pos_rad: tilt_position,
+            vel_rps: move_velocity
         }
     });
     movo_head_cmd_publisher.publish(height_position);
@@ -51,7 +54,7 @@ createHeadButtons = function () {
     pan_left.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Pan Left");
-            moveHead(POSITION_CHANGE_PAN, 0);
+            moveHead(-POSITION_CHANGE_PAN, 0);
         }, interval_frequencey);
     }
 
@@ -66,7 +69,7 @@ createHeadButtons = function () {
     pan_right.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Pan Right");
-            moveHead(-POSITION_CHANGE_PAN, 0);
+            moveHead(POSITION_CHANGE_PAN, 0);
         }, interval_frequencey);
     }
 
@@ -81,7 +84,7 @@ createHeadButtons = function () {
     tilt_up.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Tilt Up");
-            moveHead(0,POSITION_CHANGE_TILT);
+            moveHead(0,-POSITION_CHANGE_TILT);
         }, interval_frequencey);
     }
 
@@ -96,7 +99,7 @@ createHeadButtons = function () {
     tilt_down.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Tilt Down");
-            moveHead(0,-POSITION_CHANGE_TILT);
+            moveHead(0,POSITION_CHANGE_TILT);
         }, interval_frequencey);
     }
 
