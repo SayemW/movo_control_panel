@@ -27,6 +27,9 @@ movo_teleop_cmd_vel_publisher = new ROSLIB.Topic({
  * Controls the base of the movo
  */
 createBaseButtons = function () {
+    // Base velocity
+    var base_velocity = 0.05;
+
     // Get buttons
     var base_forward = document.getElementById("base_forward");
     var base_backward = document.getElementById("base_backward");
@@ -39,7 +42,7 @@ createBaseButtons = function () {
     var move_interval;
 
     // Interval repeat frequence
-    var interval_frequencey = 60;
+    var interval_frequencey = 1;
 
     // Linear and angular movement
     var linear = { x: 0, y: 0, z: 0 };
@@ -50,7 +53,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Forward");
             clearValues(linear, angular);
-            linear.x = 0.01;
+            linear.x = base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }
@@ -67,7 +70,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Backward");
             clearValues(linear, angular);
-            linear.x = -0.01;
+            linear.x = -base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }
@@ -84,7 +87,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Left");
             clearValues(linear, angular);
-            linear.y = 0.01;
+            linear.y = base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }
@@ -101,7 +104,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Right");
             clearValues(linear, angular);
-            linear.y = -1;
+            linear.y = -base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }
@@ -118,7 +121,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Rot_Left");
             clearValues(linear, angular);
-            angular.z = 0.01;
+            angular.z = base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }
@@ -135,7 +138,7 @@ createBaseButtons = function () {
         move_interval = setInterval(function () {
             console.log("Rot_Left");
             clearValues(linear, angular);
-            angular.z = -0.01;
+            angular.z = -base_velocity;
             moveBase(linear, angular);
         }, interval_frequencey);
     }

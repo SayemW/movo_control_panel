@@ -31,6 +31,7 @@
     <script src="control.js"></script>
     <script src="base_control.js"></script>
     <script src="torso_control.js"></script>
+    <script src="head_control.js"></script>
     <script src="joystick_controls.js"></script>
     <script src="helper_functions.js"></script>
 </head>
@@ -76,12 +77,12 @@
             <div class="card">
                 <div class="card-header">Head Control</div>
                 <div class="card-body btn-group btn-group-sm d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary">Pan Left</button>
+                    <button type="button" class="btn btn-primary" id="pan_left">Pan Left</button>
                     <div class="btn-group-vertical btn-group-sm">
-                        <button type="button" class="btn btn-primary">Tilt Up</button>
-                        <button type="button" class="btn btn-primary">Tilt Down</button>
+                        <button type="button" class="btn btn-primary" id="tilt_up">Tilt Up</button>
+                        <button type="button" class="btn btn-primary" id="tilt_down">Tilt Down</button>
                     </div>
-                    <button type="button" class="btn btn-primary">Pan Right</button>
+                    <button type="button" class="btn btn-primary" id="pan_right">Pan Right</button>
                 </div>
             </div>
         </div>

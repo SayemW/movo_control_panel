@@ -27,7 +27,7 @@ window.onload = function () {
   // Load buttons
   createBaseButtons();
   createTorsoButtons();
-  
+  createHeadButtons();
   // get handle for video placeholder
   video = document.getElementById("video");
   // Populate video source
