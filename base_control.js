@@ -20,11 +20,11 @@ createBaseButtons = function () {
     // Forward movement
     base_forward.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Forward");
+            console.log("Forward");
             clearValues(linear, angular);
-            linear.x = 1;
+            linear.x = 0.01;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_forward.onmouseup = function () {
@@ -37,11 +37,11 @@ createBaseButtons = function () {
     // Backward movement
     base_backward.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Backward");
+            console.log("Backward");
             clearValues(linear, angular);
-            linear.x = -1;
+            linear.x = -0.01;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_backward.onmouseup = function () {
@@ -54,11 +54,11 @@ createBaseButtons = function () {
     // Left movement
     base_left.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Left");
+            console.log("Left");
             clearValues(linear, angular);
-            linear.y = 1;
+            linear.y = 0.01;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_left.onmouseup = function () {
@@ -71,11 +71,11 @@ createBaseButtons = function () {
     // Right movement
     base_right.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Right");
+            console.log("Right");
             clearValues(linear, angular);
             linear.y = -1;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_right.onmouseup = function () {
@@ -88,11 +88,11 @@ createBaseButtons = function () {
     // Rotate left
     base_rot_left.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Rot_Left");
+            console.log("Rot_Left");
             clearValues(linear, angular);
-            angular.z = 1;
+            angular.z = 0.01;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_rot_left.onmouseup = function () {
@@ -105,11 +105,11 @@ createBaseButtons = function () {
     // Rotate right
     base_rot_right.onmousedown = function () {
         move_interval = setInterval(function () {
-            //console.log("Rot_Left");
+            console.log("Rot_Left");
             clearValues(linear, angular);
-            angular.z = -1;
+            angular.z = -0.01;
             move(linear, angular);
-        }, 500);
+        }, 60);
     }
 
     base_rot_right.onmouseup = function () {
@@ -120,7 +120,7 @@ createBaseButtons = function () {
     }
 
     function stop() {
-        //console.log("Stop");
+        console.log("Stop");
         clearInterval(move_interval);
     }
 }

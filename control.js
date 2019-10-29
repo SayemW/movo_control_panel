@@ -27,7 +27,7 @@ ros.on("close", function () {
 // Publish a ROS Topic
 cmd_vel_publisher = new ROSLIB.Topic({
   ros: ros,
-  name: "/turtle1/cmd_vel",
+  name: "movo/teleop/cmd_vel",
   messageType: "geometry_msgs/Twist"
 });
 
