@@ -1,3 +1,28 @@
+// Base Control Message
+movo_teleop_cmd_vel_publisher = new ROSLIB.Topic({
+    ros: ros,
+    name: "movo/teleop/cmd_vel",
+    messageType: "geometry_msgs/Twist"
+  });
+  
+  moveBase = function (linear, angular) {
+    //console.log("Moving Function");
+    var twist = new ROSLIB.Message({
+      linear: {
+        x: linear.x,
+        y: linear.y,
+        z: linear.z
+      },
+      angular: {
+        x: angular.x,
+        y: angular.y,
+        z: angular.z
+      }
+    });
+    movo_teleop_cmd_vel_publisher.publish(twist);
+  };
+  
+
 /**
  * Controls the base of the movo
  */
@@ -13,6 +38,9 @@ createBaseButtons = function () {
     // Interval control
     var move_interval;
 
+    // Interval repeat frequence
+    var interval_frequencey = 60;
+
     // Linear and angular movement
     var linear = { x: 0, y: 0, z: 0 };
     var angular = { x: 0, y: 0, z: 0 };
@@ -23,15 +51,15 @@ createBaseButtons = function () {
             console.log("Forward");
             clearValues(linear, angular);
             linear.x = 0.01;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_forward.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_forward.onmouseleave = function () {
-        stop();
+        stop(move_interval);
     }
 
     // Backward movement
@@ -40,15 +68,15 @@ createBaseButtons = function () {
             console.log("Backward");
             clearValues(linear, angular);
             linear.x = -0.01;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_backward.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_backward.onmouseleave = function () {
-        stop();
+        stop(move_interval);
     }
 
     // Left movement
@@ -57,15 +85,15 @@ createBaseButtons = function () {
             console.log("Left");
             clearValues(linear, angular);
             linear.y = 0.01;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_left.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_left.onmouseleave = function () {
-        stop();
+        stop(move_interval);
     }
 
     // Right movement
@@ -74,15 +102,15 @@ createBaseButtons = function () {
             console.log("Right");
             clearValues(linear, angular);
             linear.y = -1;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_right.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_right.onmouseleave = function () {
-        stop();
+        stop(move_interval);
     }
 
     // Rotate left
@@ -91,15 +119,15 @@ createBaseButtons = function () {
             console.log("Rot_Left");
             clearValues(linear, angular);
             angular.z = 0.01;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_rot_left.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_rot_left.onmouseleave = function () {
-        stop();
+        stop(move_interval);
     }
 
     // Rotate right
@@ -108,20 +136,15 @@ createBaseButtons = function () {
             console.log("Rot_Left");
             clearValues(linear, angular);
             angular.z = -0.01;
-            move(linear, angular);
-        }, 60);
+            moveBase(linear, angular);
+        }, interval_frequencey);
     }
 
     base_rot_right.onmouseup = function () {
-        stop();
+        stop(move_interval);
     }
     base_rot_right.onmouseleave = function () {
-        stop();
-    }
-
-    function stop() {
-        console.log("Stop");
-        clearInterval(move_interval);
+        stop(move_interval);
     }
 }
 
