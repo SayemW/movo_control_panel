@@ -38,6 +38,10 @@ createBaseButtons = function () {
     var base_rot_left = document.getElementById("base_rot_left");
     var base_rot_right = document.getElementById("base_rot_right");
 
+
+    // Get Speed slider
+    var speed_multiplier = document.getElementById("robot_speed");
+
     // Interval control
     var move_interval;
 
@@ -148,6 +152,11 @@ createBaseButtons = function () {
     }
     base_rot_right.onmouseleave = function () {
         stop(move_interval);
+    }
+
+    // Update Speed
+    speed_multiplier.onchange = function () {
+        base_velocity = 0.05 * speed_multiplier.value;
     }
 }
 

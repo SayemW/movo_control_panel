@@ -14,7 +14,6 @@ movo_linear_actuator_cmd_publisher = new ROSLIB.Topic({
 });
 
 moveTorso = function (position_update) {
-    //console.log("Moving Function");
     // Update position
     torso_position += position_update;
     // Clamp position

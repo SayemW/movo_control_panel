@@ -5,7 +5,7 @@ createJoystick = function () {
     var options = {
         zone: document.getElementById("joystick"),
         threshold: 0.1,
-        position: { top: "110px", left: "115px" },
+        position: { top: "110px", left: "140px" },
         mode: "static",
         size: 100,
         color: "#000000"
