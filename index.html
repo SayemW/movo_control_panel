@@ -8,24 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="jQuery_bootstrap/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="jQuery_bootstrap/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script src="jQuery_bootstrap/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script src="jQuery_bootstrap/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- ROS Web Tools-->
-    <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-    <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-    <script src="https://static.robotwebtools.org/keyboardteleopjs/current/keyboardteleop.min.js"></script>
+    <script src="ros_web_tools/roslib.min.js"></script>
+    <script src="ros_web_tools/eventemitter2.min.js"></script>
+    <script src="ros_web_tools/keyboardteleop.min.js"></script>
     <!-- Control Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.7.3/nipplejs.js"></script>
     <script src="control.js"></script>
@@ -45,9 +45,9 @@
     </div>
 
     <!-- CONTROLS -->
-    <div class="row my-4">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2">
+    <div class="row my-2">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
             <div class="card">
                 <div class="card-header">Base Control</div>
                 <div class="card-body btn-group btn-group-sm">
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-sm-2">
             <div class="card">
                 <div class="card-header">Torso Control</div>
                 <div class="card-body btn-group-vertical btn-group-sm d-flex justify-content-center">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-sm-3">
             <div class="card">
                 <div class="card-header">Head Control</div>
                 <div class="card-body btn-group btn-group-sm d-flex justify-content-center">
@@ -86,15 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2">
-            <div class="card">
-                <div class="card-header">Active Arm Control</div>
-                <div class="card-body d-flex justify-content-center" style="width:100px; height:120px">
-                    <div id="joystick"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2">
+        <div class="col-sm-2">
             <div class="card">
                 <div class="card-header">Gripper Control</div>
                 <div class="card-body btn-group-vertical btn-group-sm d-flex justify-content-center">
@@ -103,17 +95,92 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-1"></div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <!--ARM CONTROL-->
+    <div class="row my-2">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <div class="card">
+                <div class="card-header">Left Arm Translation</div>
+                <div class="card-body btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary" id="left_arm_left">Left</button>
+                    <div class="btn-group-vertical btn-group-sm ">
+                        <button type="button" class="btn btn-primary" id="left_arm_forward">Forward</button>
+                        <button type="button" class="btn btn-primary" id="left_arm_backward">Backward</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="left_arm_right">Right</button>
+                </div>
+                <div class="card-body btn-group btn-group-md">
+                    <button type="button" class="btn btn-primary" id="left_arm_up">Up</button>
+                    <button type="button" class="btn btn-primary" id="left_arm_down">Down</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card">
+                <div class="card-header">Left Arm Rotation</div>
+                <div class="card-body btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary" id="left_arm_rotation_left">Left</button>
+                    <div class="btn-group-vertical btn-group-sm ">
+                        <button type="button" class="btn btn-primary" id="left_arm_rotation_forward">Forward</button>
+                        <button type="button" class="btn btn-primary" id="left_arm_rotation_backward">Backward</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="left_arm_rotation_right">Right</button>
+                </div>
+                <div class="card-body btn-group btn-group-md">
+                    <button type="button" class="btn btn-primary" id="left_arm_rotation_up">Up</button>
+                    <button type="button" class="btn btn-primary" id="left_arm_rotation_down">Down</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <div class="card">
+                <div class="card-header">Right Arm Translation</div>
+                <div class="card-body btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary" id="right_arm_left">Left</button>
+                    <div class="btn-group-vertical btn-group-sm ">
+                        <button type="button" class="btn btn-primary" id="right_arm_forward">Forward</button>
+                        <button type="button" class="btn btn-primary" id="right_arm_backward">Backward</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="right_arm_right">Right</button>
+                </div>
+                <div class="card-body btn-group btn-group-md">
+                    <button type="button" class="btn btn-primary" id="right_arm_up">Up</button>
+                    <button type="button" class="btn btn-primary" id="right_arm_down">Down</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card">
+                <div class="card-header">Right Arm Rotation</div>
+                <div class="card-body btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary" id="right_arm_rotation_left">Left</button>
+                    <div class="btn-group-vertical btn-group-sm ">
+                        <button type="button" class="btn btn-primary" id="right_arm_rotation_forward">Forward</button>
+                        <button type="button" class="btn btn-primary" id="right_arm_rotation_backward">Backward</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="right_arm_rotation_right">Right</button>
+                </div>
+                <div class="card-body btn-group btn-group-md">
+                    <button type="button" class="btn btn-primary" id="right_arm_rotation_up">Up</button>
+                    <button type="button" class="btn btn-primary" id="right_arm_rotation_down">Down</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
     </div>
 
     <!-- SPEED -->
-    <div class="row">
+    <div class="row my-2">
         <div class="col-md-4"></div>
         <div class=" col-md-4">
             <label for="robot-speed">
                 <strong>Speed Multiplier (1x - 5x)</strong>
             </label>
-            <input type="range" min="1" max="5" step ="0.1" class="custom-range" id="robot_speed">
+            <input type="range" min="1" max="5" step="0.1" class="custom-range" id="robot_speed">
         </div>
         <div class="col-md-4"></div>
     </div>
