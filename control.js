@@ -34,6 +34,6 @@ window.onload = function () {
   // get handle for video placeholder
   video = document.getElementById("video");
   // Populate video source
-  video.src = "http://localhost:8080/stream?topic=/kinect2/sd/image_ir";
+  video.src = "http://localhost:8080/stream_viewer?topic=/movo_camera/sd/image_color_rect";
   //createJoystick();
 };
