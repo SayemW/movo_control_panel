@@ -155,8 +155,9 @@ createBaseButtons = function () {
     }
 
     // Update Speed
-    speed_multiplier.onchange = function () {
+    speed_multiplier.onclick = function () {
         base_velocity = 0.05 * speed_multiplier.value;
+        console.log(base_velocity);
     }
 }
 
