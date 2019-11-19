@@ -84,7 +84,7 @@ createHeadButtons = function () {
     tilt_up.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Tilt Up");
-            moveHead(0,-POSITION_CHANGE_TILT);
+            moveHead(0,POSITION_CHANGE_TILT);
         }, interval_frequencey);
     }
 
@@ -95,11 +95,11 @@ createHeadButtons = function () {
         stop(move_interval);
     }
 
-    // Right Pan movement
+    // Down Tilt movement
     tilt_down.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Tilt Down");
-            moveHead(0,POSITION_CHANGE_TILT);
+            moveHead(0,-POSITION_CHANGE_TILT);
         }, interval_frequencey);
     }
 
