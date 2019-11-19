@@ -1,8 +1,8 @@
 // Arm Control Message
-movo_teleop_cmd_vel_publisher = new ROSLIB.Topic({
+movo_left_arm_publisher = new ROSLIB.Topic({
     ros: ros,
-    name: "movo/teleop/",
-    messageType: "geometry_msgs/Twist"
+    name: "movo/head/cmd",
+    messageType: "movo_msgs/PanTiltCmd"
   });
   
   moveArm = function (linear, angular) {
@@ -19,7 +19,7 @@ movo_teleop_cmd_vel_publisher = new ROSLIB.Topic({
         z: angular.z
       }
     });
-    movo_teleop_cmd_vel_publisher.publish(twist);
+    movo_left_arm_publisher.publish(twist);
   };
   
 
