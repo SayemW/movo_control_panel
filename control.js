@@ -3,27 +3,26 @@ var ros = new ROSLIB.Ros({
   url: "ws://localhost:9090"
 });
 
-
 // Test ROS Connection
-ros.on("connection", function () {
+ros.on("connection", function() {
   document.getElementById("info-panel").classList.remove("alert-warning");
   document.getElementById("info-panel").classList.remove("alert-error");
   document.getElementById("info-panel").classList.add("alert-success");
 });
 
-ros.on("error", function (error) {
+ros.on("error", function(error) {
   document.getElementById("info-panel").classList.remove("alert-success");
   document.getElementById("info-panel").classList.remove("alert-warning");
   document.getElementById("info-panel").classList.add("alert-error");
 });
 
-ros.on("close", function () {
+ros.on("close", function() {
   document.getElementById("info-panel").classList.remove("alert-success");
   document.getElementById("info-panel").classList.remove("alert-error");
   document.getElementById("info-panel").classList.add("alert-warning");
 });
 
-window.onload = function () {
+window.onload = function() {
   // Load buttons
   createBaseButtons();
   createTorsoButtons();
@@ -34,6 +33,7 @@ window.onload = function () {
   // get handle for video placeholder
   video = document.getElementById("video");
   // Populate video source
-  video.src = "http://localhost:8080/stream?topic=/movo_camera/sd/image_color_rect";
+  video.src =
+    "http://localhost:8080/stream?topic=/movo_camera/sd/image_color_rect";
   //createJoystick();
 };

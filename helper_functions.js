@@ -1,10 +1,20 @@
 /**
-  * Clears values
-  */
-clearValues = function (linear, angular) {
-    linear.x = linear.y = linear.z = 0;
-    angular.x = angular.y = angular.z = 0;
-}
+ * Relaxed ik helpers
+ */
+// Relaxed ik
+relaxed_ik_ee_pose_goals_publisher = new ROSLIB.Topic({
+  ros: ros,
+  name: "/relaxed_ik/ee_pose_goals",
+  messageType: "/relaxed_ik/msg/ee_pose_goals"
+});
+
+/**
+ * Clears values
+ */
+clearValues = function(linear, angular) {
+  linear.x = linear.y = linear.z = 0;
+  angular.x = angular.y = angular.z = 0;
+};
 
 /**
  * Stops buttons from executing
