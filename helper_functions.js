@@ -5,7 +5,7 @@
 relaxed_ik_ee_pose_goals_publisher = new ROSLIB.Topic({
   ros: ros,
   name: "/relaxed_ik/ee_pose_goals",
-  messageType: "/relaxed_ik/msg/ee_pose_goals"
+  messageType: "/relaxed_ik/EEPoseGoals"
 });
 
 /**

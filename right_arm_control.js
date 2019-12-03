@@ -1,18 +1,21 @@
 moveArm = function(linear, angular) {
   //console.log("Moving Function");
-  var twist = new ROSLIB.Message({
-    linear: {
-      x: linear.x,
-      y: linear.y,
-      z: linear.z
-    },
-    angular: {
-      x: angular.x,
-      y: angular.y,
-      z: angular.z
+  var ee_pose_goals_message = new ROSLIB.Message({
+    ee_poses: {
+      position: {
+        x: linear.x,
+        y: linear.y,
+        z: linear.z
+      },
+      orientation: {
+        x: angular.x,
+        y: angular.y,
+        z: angular.z,
+        w: angular.w
+      }
     }
   });
-  movo_right_arm_publisher.publish(twist);
+  relaxed_ik_ee_pose_goals_publisher.publish(ee_pose_goals_message);
 };
 
 /**

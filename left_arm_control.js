@@ -2,31 +2,20 @@
  * Define message types (Publishers and subscribers)
  */
 moveArm = function(linear, angular) {
-  /**
-   * 1. Get current joint information
-   * 2. Send the joint inforamtion +- the change to relaxed_ik
-   * 3. Get the joint angle solutions from relaxed_ik
-   * 4. Send these to the cartesian_vel_cmd
-   */
-  /*
-      subscriber.subscribe(function(msg){
-          required data = msg.data;
-      });
-      */
-  //console.log("Moving Function");
   var ee_pose_goals_message = new ROSLIB.Message({
-    linear: {
+    position: {
       x: linear.x,
       y: linear.y,
       z: linear.z
     },
-    angular: {
+    orientation: {
       x: angular.x,
       y: angular.y,
-      z: angular.z
+      z: angular.z,
+      w: angular.w
     }
   });
-  movo_left_arm_publisher.publish(twist);
+  relaxed_ik_ee_pose_goals_publisher.publish(ee_pose_goals_message);
 };
 
 /**
@@ -66,7 +55,7 @@ createLeftArmButtons = function() {
 
   // Linear and angular movement
   var linear = { x: 0, y: 0, z: 0 };
-  var angular = { x: 0, y: 0, z: 0 };
+  var angular = { x: 0, y: 0, z: 0, w: 0};
 
   // Forward movement
   arm_forward.onmousedown = function() {
