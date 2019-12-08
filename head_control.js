@@ -9,13 +9,6 @@ var pan_position = 0.0;
 var tilt_position = 0.0;
 var move_velocity = 0.87;
 
-// Torso Control Message
-movo_head_cmd_publisher = new ROSLIB.Topic({
-    ros: ros,
-    name: "movo/head/cmd",
-    messageType: "movo_msgs/PanTiltCmd"
-});
-
 moveHead = function (pan, tilt) {
     //console.log("Moving Function");
     // Update position

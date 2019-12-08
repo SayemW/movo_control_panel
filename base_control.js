@@ -1,10 +1,3 @@
-// Base Control Message
-movo_teleop_cmd_vel_publisher = new ROSLIB.Topic({
-  ros: ros,
-  name: "movo/teleop/cmd_vel",
-  messageType: "geometry_msgs/Twist"
-});
-
 moveBase = function(linear, angular) {
   //console.log("Moving Function");
   var twist = new ROSLIB.Message({

@@ -1,7 +1,7 @@
 moveArm = function(linear, angular) {
   //console.log("Moving Function");
   var ee_pose_goals_message = new ROSLIB.Message({
-    ee_poses: {
+    ee_poses: [{
       position: {
         x: linear.x,
         y: linear.y,
@@ -13,7 +13,7 @@ moveArm = function(linear, angular) {
         z: angular.z,
         w: angular.w
       }
-    }
+    }]
   });
   relaxed_ik_ee_pose_goals_publisher.publish(ee_pose_goals_message);
 };
@@ -62,7 +62,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Forward");
       clearValues(linear, angular);
-      linear.x = arm_velocity;
+      linear.x += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -79,7 +79,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Backward");
       clearValues(linear, angular);
-      linear.x = -arm_velocity;
+      linear.x += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -96,7 +96,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Left");
       clearValues(linear, angular);
-      linear.y = arm_velocity;
+      linear.y += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -113,7 +113,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Right");
       clearValues(linear, angular);
-      linear.y = -arm_velocity;
+      linear.y += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -130,7 +130,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Up");
       clearValues(linear, angular);
-      linear.y = -arm_velocity;
+      linear.z += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -146,7 +146,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Down");
       clearValues(linear, angular);
-      linear.y = -arm_velocity;
+      linear.z += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -166,7 +166,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Forward");
       clearValues(linear, angular);
-      angular.z = arm_velocity;
+      angular.z += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -183,7 +183,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Backward");
       clearValues(linear, angular);
-      angular.z = -arm_velocity;
+      angular.z += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -200,7 +200,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Left");
       clearValues(linear, angular);
-      angular.z = arm_velocity;
+      angular.z += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -217,7 +217,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Left");
       clearValues(linear, angular);
-      angular.z = -arm_velocity;
+      angular.z += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -234,7 +234,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Up");
       clearValues(linear, angular);
-      angular.z = arm_velocity;
+      angular.z += arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };
@@ -251,7 +251,7 @@ createRightArmButtons = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Down");
       clearValues(linear, angular);
-      angular.z = -arm_velocity;
+      angular.z += -arm_velocity;
       moveArm(linear, angular);
     }, interval_frequencey);
   };

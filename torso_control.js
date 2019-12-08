@@ -6,13 +6,6 @@ const POSITION_CHANGE = 0.01;
 
 var torso_position = 0.0;
 
-// Torso Control Message
-movo_linear_actuator_cmd_publisher = new ROSLIB.Topic({
-    ros: ros,
-    name: "movo/linear_actuator_cmd",
-    messageType: "movo_msgs/LinearActuatorCmd"
-});
-
 moveTorso = function (position_update) {
     // Update position
     torso_position += position_update;
