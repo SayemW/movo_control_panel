@@ -55,7 +55,7 @@ createRightArmButtons = function() {
 
   // Linear and angular movement
   var linear = { x: 0, y: 0, z: 0 };
-  var angular = { x: 0, y: 0, z: 0 };
+  var angular = { x: 0, y: 0, z: 0, w: 1 };
 
   // Forward movement
   arm_forward.onmousedown = function() {
