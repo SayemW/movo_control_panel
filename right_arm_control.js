@@ -1,5 +1,6 @@
-moveArm = function(linear, angular) {
+moveRightArm = function(linear, angular) {
   //console.log("Moving Function");
+  console.log(linear, angular);
   var ee_pose_goals_message = new ROSLIB.Message({
     ee_poses: [{
       position: {
@@ -21,6 +22,7 @@ moveArm = function(linear, angular) {
 /**
  * Controls the Arm of the movo
  */
+
 createRightArmButtons = function() {
   // Arm velocity
   var arm_velocity = 0.05;
@@ -43,6 +45,10 @@ createRightArmButtons = function() {
   var arm_rotation_left = document.getElementById("right_arm_rotation_left");
   var arm_rotation_up = document.getElementById("right_arm_rotation_up");
   var arm_rotation_down = document.getElementById("right_arm_rotation_down");
+  
+  // Linear and angular movement
+  var linear = { x: 0, y: 0, z: 0 };
+  var angular = { x: 0, y: 0, z: 0, w: 1 };
 
   // Get Speed slider
   var speed_multiplier = document.getElementById("robot_speed");
@@ -53,17 +59,12 @@ createRightArmButtons = function() {
   // Interval repeat frequence
   var interval_frequencey = 60;
 
-  // Linear and angular movement
-  var linear = { x: 0, y: 0, z: 0 };
-  var angular = { x: 0, y: 0, z: 0, w: 1 };
-
   // Forward movement
   arm_forward.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Forward");
-      clearValues(linear, angular);
       linear.x += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -78,9 +79,8 @@ createRightArmButtons = function() {
   arm_backward.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Backward");
-      clearValues(linear, angular);
       linear.x += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -95,9 +95,8 @@ createRightArmButtons = function() {
   arm_left.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Left");
-      clearValues(linear, angular);
       linear.y += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -112,9 +111,8 @@ createRightArmButtons = function() {
   arm_right.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Right");
-      clearValues(linear, angular);
       linear.y += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -129,9 +127,8 @@ createRightArmButtons = function() {
   arm_up.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Up");
-      clearValues(linear, angular);
       linear.z += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -145,9 +142,8 @@ createRightArmButtons = function() {
   arm_down.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Down");
-      clearValues(linear, angular);
       linear.z += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -165,9 +161,8 @@ createRightArmButtons = function() {
   arm_rotation_forward.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Forward");
-      clearValues(linear, angular);
       angular.z += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -182,9 +177,8 @@ createRightArmButtons = function() {
   arm_rotation_backward.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Backward");
-      clearValues(linear, angular);
       angular.z += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -199,9 +193,8 @@ createRightArmButtons = function() {
   arm_rotation_left.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Left");
-      clearValues(linear, angular);
       angular.z += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -216,9 +209,8 @@ createRightArmButtons = function() {
   arm_rotation_right.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Left");
-      clearValues(linear, angular);
       angular.z += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -233,9 +225,8 @@ createRightArmButtons = function() {
   arm_rotation_up.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Up");
-      clearValues(linear, angular);
       angular.z += arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
@@ -250,9 +241,8 @@ createRightArmButtons = function() {
   arm_rotation_right.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Rot_Down");
-      clearValues(linear, angular);
       angular.z += -arm_velocity;
-      moveArm(linear, angular);
+      moveRightArm(linear, angular);
     }, interval_frequencey);
   };
 
