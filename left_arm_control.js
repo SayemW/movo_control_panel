@@ -2,22 +2,37 @@
  * Define message types (Publishers and subscribers)
  */
 moveLeftArm = function(linear, angular) {
-  //console.log("Moving Function");
-  console.log(linear, angular);
+  // console.log("Moving Function");
+  // console.log(linear, angular);
   var ee_pose_goals_message = new ROSLIB.Message({
-    ee_poses: [{
-      position: {
-        x: linear.x,
-        y: linear.y,
-        z: linear.z
+    ee_poses: [
+      {
+        position: {
+          x: linear.x,
+          y: linear.y,
+          z: linear.z
+        },
+        orientation: {
+          x: angular.x,
+          y: angular.y,
+          z: angular.z,
+          w: angular.w
+        }
       },
-      orientation: {
-        x: angular.x,
-        y: angular.y,
-        z: angular.z,
-        w: angular.w
+      {
+        position: {
+          x: 0,
+          y: 0,
+          z: 0
+        },
+        orientation: {
+          x: 0,
+          y: 0,
+          z: 0,
+          w: 1
+        }
       }
-    }]
+    ]
   });
   relaxed_ik_ee_pose_goals_publisher.publish(ee_pose_goals_message);
 };
