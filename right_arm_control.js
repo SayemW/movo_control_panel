@@ -142,7 +142,7 @@ createRightArmButtons = function() {
   arm_up.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Up");
-      linear.z += -arm_velocity;
+      linear.z += arm_velocity;
       moveRightArm(linear, angular);
     }, interval_frequencey);
   };
@@ -157,7 +157,7 @@ createRightArmButtons = function() {
   arm_down.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Down");
-      linear.z += arm_velocity;
+      linear.z += -arm_velocity;
       moveRightArm(linear, angular);
     }, interval_frequencey);
   };

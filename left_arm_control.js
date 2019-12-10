@@ -8,19 +8,6 @@ moveLeftArm = function(linear, angular) {
     ee_poses: [
       {
         position: {
-          x: linear.x,
-          y: linear.y,
-          z: linear.z
-        },
-        orientation: {
-          x: angular.x,
-          y: angular.y,
-          z: angular.z,
-          w: angular.w
-        }
-      },
-      {
-        position: {
           x: 0,
           y: 0,
           z: 0
@@ -30,6 +17,19 @@ moveLeftArm = function(linear, angular) {
           y: 0,
           z: 0,
           w: 1
+        }
+      },
+      {
+        position: {
+          x: linear.x,
+          y: linear.y,
+          z: linear.z
+        },
+        orientation: {
+          x: angular.x,
+          y: angular.y,
+          z: angular.z,
+          w: angular.w
         }
       }
     ]
@@ -62,9 +62,9 @@ createLeftArmButtons = function() {
   var arm_rotation_up = document.getElementById("left_arm_rotation_up");
   var arm_rotation_down = document.getElementById("left_arm_rotation_down");
 
-   // Linear and angular movement
+  // Linear and angular movement
   var linear = { x: 0, y: 0, z: 0 };
-  var angular = { x: 0, y: 0, z: 0, w: 1};
+  var angular = { x: 0, y: 0, z: 0, w: 1 };
 
   // Get Speed slider
   var speed_multiplier = document.getElementById("robot_speed");
@@ -143,7 +143,7 @@ createLeftArmButtons = function() {
   arm_up.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Up");
-      linear.y += -arm_velocity;
+      linear.z += arm_velocity;
       moveLeftArm(linear, angular);
     }, interval_frequencey);
   };
@@ -158,7 +158,7 @@ createLeftArmButtons = function() {
   arm_down.onmousedown = function() {
     move_interval = setInterval(function() {
       console.log("Down");
-      linear.y += -arm_velocity;
+      linear.z += -arm_velocity;
       moveLeftArm(linear, angular);
     }, interval_frequencey);
   };
