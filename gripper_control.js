@@ -1,3 +1,7 @@
+/**
+ * TODO: Add gripper controls once MOVO gripper is 
+ * back online
+ */
 moveGripper = function() {
   // console.log("Opening / Closing Gripper")
   var gripper_position = new ROSLIB.Message({

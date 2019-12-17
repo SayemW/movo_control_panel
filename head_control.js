@@ -1,4 +1,4 @@
-// Min and Max values of the height of movo
+// Range of values between which the MOVO head is
 const MIN_TILT = -1.57;
 const MAX_TILT = 1.57;
 
@@ -9,11 +9,15 @@ var pan_position = 0.0;
 var tilt_position = 0.0;
 var move_velocity = 0.87;
 
+/**
+ * Publishes messages to movo/head/cmd ROS topic
+ */
 moveHead = function(pan, tilt) {
   //console.log("Moving Function");
   // Update position
   pan_position += pan;
   tilt_position += tilt;
+  
   // Clamp position
   pan_position = Math.max(MIN_TILT, Math.min(pan_position, MAX_TILT));
   tilt_position = Math.max(MIN_TILT, Math.min(tilt_position, MAX_TILT));

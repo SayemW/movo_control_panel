@@ -1,3 +1,6 @@
+/**
+ * Publishes messages to movo/teleop/cmd_vel ROS topic
+ */
 moveBase = function(linear, angular) {
   //console.log("Moving Function");
   var twist = new ROSLIB.Message({
@@ -36,8 +39,12 @@ createBaseButtons = function() {
   // Interval control
   var move_interval;
 
-  // Interval repeat frequence
-  var interval_frequencey = 1;
+  // Interval repeat wait
+  // The message needs to be published repeatedly for the
+  // base controls to work
+  // Change value to alter number of times a message is 
+  // published when button is held down
+  var interval_wait = 1;
 
   // Linear and angular movement
   var linear = { x: 0, y: 0, z: 0 };
@@ -50,7 +57,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       linear.x = base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_forward.onmouseup = function() {
@@ -67,7 +74,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       linear.x = -base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_backward.onmouseup = function() {
@@ -84,7 +91,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       linear.y = base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_left.onmouseup = function() {
@@ -101,7 +108,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       linear.y = -base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_right.onmouseup = function() {
@@ -118,7 +125,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       angular.z = base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_rot_left.onmouseup = function() {
@@ -135,7 +142,7 @@ createBaseButtons = function() {
       clearValues(linear, angular);
       angular.z = -base_velocity;
       moveBase(linear, angular);
-    }, interval_frequencey);
+    }, interval_wait);
   };
 
   base_rot_right.onmouseup = function() {

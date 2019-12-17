@@ -1,10 +1,13 @@
 /**
- * Define message types (Publishers and subscribers)
+ * Publishes messages to relaxed_ik/ee_pose_goals
+ * TODO: Test left arm controls once the node is updated 
+ * to works for the left arm.
  */
 moveLeftArm = function(linear, angular) {
   // console.log("Moving Function");
   // console.log(linear, angular);
   var ee_pose_goals_message = new ROSLIB.Message({
+    // Object at index 1 controls the left arm
     ee_poses: [
       {
         position: {

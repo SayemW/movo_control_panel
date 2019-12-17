@@ -6,6 +6,9 @@ const POSITION_CHANGE = 0.01;
 
 var torso_position = 0.0;
 
+/**
+ * Publishes messages to movo/linear_actuator/cmd ROS topic
+ */
 moveTorso = function (position_update) {
     // Update position
     torso_position += position_update;
@@ -25,15 +28,17 @@ createTorsoButtons = function () {
     // Interval control
     var move_interval;
 
-    // Interval repeat frequence
-    var interval_frequencey = 60;
+    // Interval repeat wait period
+    // Change value to alter number of times a message is 
+    // published when button is held down
+    var interval_wait = 80;
 
     // Up movement
     height_up.onmousedown = function () {
         move_interval = setInterval(function () {
             console.log("Up");
             moveTorso(POSITION_CHANGE);
-        }, interval_frequencey);
+        }, interval_wait);
     }
 
     height_up.onmouseup = function () {
@@ -46,9 +51,9 @@ createTorsoButtons = function () {
     // Down movement
     height_down.onmousedown = function () {
         move_interval = setInterval(function () {
-            console.log("Backward");
+            console.log("Down");
             moveTorso(-POSITION_CHANGE);
-        }, interval_frequencey);
+        }, interval_wait);
     }
 
     height_down.onmouseup = function () {

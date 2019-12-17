@@ -1,4 +1,7 @@
-// Relaxed ik
+/**
+ * Set of publishers for the MOVO
+ */
+// Relaxed ik Arm Contol Message
 relaxed_ik_ee_pose_goals_publisher = new ROSLIB.Topic({
   ros: ros,
   name: "/relaxed_ik/ee_pose_goals",
