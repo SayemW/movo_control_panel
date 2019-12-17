@@ -1,7 +1,8 @@
 /**
  * Publishes messages to relaxed_ik/ee_pose_goals
  * TODO: Test left arm controls once the node is updated 
- * to works for the left arm.
+ * to works for the left arm. Check if an empty object can
+ * be sent to the right arm node.
  */
 moveRightArm = function(linear, angular) {
   // console.log("Moving Function");
